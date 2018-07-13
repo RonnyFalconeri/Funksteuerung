@@ -1,3 +1,5 @@
+from Printer import *
+
 class Database:
     # attributes -----------------------
     database = ""
@@ -5,9 +7,9 @@ class Database:
     
     # constructor ----------------------
     def __init__(self, pDatabase):
-        print("Created database.")
+        log("create database...")
         self.database = pDatabase
-        print("Database: "+self.database)
+        log("Database: "+self.database)
         
     
     # file handling --------------------
