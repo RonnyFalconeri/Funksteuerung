@@ -1,17 +1,29 @@
-from GUI import *
 from Printer import *
+from GUI import *
+from Funker import *
 from Database import *
 
 class Funksteuerung:
     
     led_state = False 
     
-    database = "" 
+    database = ""
+    funker = ""
+    gui = ""
 
     def __init__(self):
         log("initialise controller...")
+        
         self.database = Database("Steckdosen_DB.txt")
-        gui = GUI(self)
+        self.funker = Funker()
+        self.gui = GUI(self)
+    
+    # LED control
+    def turn_on(self):
+        self.funker.turn_on()
+        
+    def turn_off(self):
+        self.funker.turn_off()
     
     # set n' get -----------------------
     def set_state(self, pState):
