@@ -1,12 +1,14 @@
 from tkinter import *
 from Printer import *
 from Settings import *
+from Database import *
 
 class GUI:
     
     # Objects
     strg = ""
     settings = ""
+    database = ""
     
     # window properties
     window = ""
@@ -18,6 +20,7 @@ class GUI:
     headline_label = ""
     headline_font = ("Arial", 25)
     state_label = ""
+    led_description = ""
     
     
     # Buttons
@@ -32,6 +35,7 @@ class GUI:
         
         # object initialising
         self.strg = pStrg
+        self.database = self.strg.get_database()
         
         # build window
         self.window = Tk()
@@ -39,14 +43,19 @@ class GUI:
         self.window.grid_columnconfigure(1, minsize=200)
         self.window.grid_rowconfigure(1, minsize=50)
         self.window.grid_rowconfigure(2, minsize=50)
+        self.refresh_description()
         
         
         # Labels ----------------------------
         self.headline_label = Label(self.window, text="Control Panel", font=self.headline_font)
         self.headline_label.grid(row=0, column=0, padx=5, pady=5)
         
+        description = Label(self.window, text=""+self.led_description+":")
+        description.grid(row=1, column=0, padx=5, pady=5, sticky=E)
+        
+        
         self.state_label = Label(self.window, text="Turned Off")
-        self.state_label.grid(row=1, columnspan=2, padx=5, pady=5)
+        self.state_label.grid(row=1, column=1, columnspan=2, padx=5, pady=5, sticky=W)
         
         
         # Buttons ---------------------------
@@ -80,4 +89,9 @@ class GUI:
         self.strg.set_state(False) # change state in controller
     
     def build_settings(self, event):
-        self.settings = Settings(self.strg)
+        self.settings = Settings(self.strg, self)
+        
+    def refresh_description(self):
+        self.led_description = self.database.get_value("description")
+        log("refresh: "+self.led_description)
+        
