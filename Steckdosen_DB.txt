@@ -1,3 +1,1 @@
-4,00011,Nachtlicht
-3,00011,Schreibtisch
-2,00011,Anlage
+4,00011,Nachtlampe

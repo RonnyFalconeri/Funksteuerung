@@ -18,12 +18,16 @@ class Funksteuerung:
         self.funker = Funker()
         self.gui = GUI(self)
     
-    # LED control
+    # LED control ----------------------
     def turn_on(self):
-        self.funker.turn_on()
+        id = self.database.get_value("id")
+        group = self.database.get_value("group")
+        self.funker.turn_on(id, group)
         
     def turn_off(self):
-        self.funker.turn_off()
+        id = self.database.get_value("id")
+        group = self.database.get_value("group")
+        self.funker.turn_off(id, group)
     
     # set n' get -----------------------
     def set_state(self, pState):
