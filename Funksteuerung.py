@@ -6,10 +6,6 @@ from Database import *
 class Funksteuerung:
     
     led_state = False 
-    
-    database = ""
-    funker = ""
-    gui = ""
 
     def __init__(self):
         log("initialise controller...")

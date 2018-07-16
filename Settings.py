@@ -3,53 +3,26 @@ from Printer import *
 
 class Settings:
     
-    # Objects
-    database = ""
-    strg = ""
-    gui = ""
-    
-    # window properties
-    window = ""
-    
     # label
     headline_font = ("Arial", 25)
     
-    # Group Widgets
-    one = "0"
-    two = "0"
-    three = "0"
-    four = "1"
-    five = "1"
-    
-    # ID Widgets
-    id = "4"
-    
-    # Description Widgets
-    description = ""
-    
-    
-    def __init__(self, pStrg, pGUI):
+    def __init__(self, strg, gui):
         log("open settings...")
         
         # object initialising
-        self.strg = pStrg
-        self.gui = pGUI
+        self.strg = strg
+        self.gui = gui
         self.database = self.strg.get_database()
         self.window = Tk()
         
-        # Group Widgets
+        # Input Variables
         self.one = StringVar()
         self.two = StringVar()
         self.three = StringVar()
         self.four = StringVar()
         self.five = StringVar()
-        
-        # ID Widgets
         self.id = StringVar()
-        
-        # Description Widgets
-        self.description = StringVar()
-        
+        self.description = StringVar()        
         
         # Labels ----------------------------
         headline_label = Label(self.window, text="Settings", font=self.headline_font)
@@ -58,7 +31,7 @@ class Settings:
         
         # Group Settings --------------------
         
-        # row 1
+        # Group Radios High
         high_label = Label(self.window, text="1")
         high_label.grid(row=1, column=0)
         
@@ -82,7 +55,7 @@ class Settings:
         self.init_radio_group_high(five_high_radio,4)
         five_high_radio.grid(row=1, column=5)
         
-        # row 2
+        # Group Radios Low
         low_label = Label(self.window, text="0")
         low_label.grid(row=2, column=0)
         
@@ -106,7 +79,7 @@ class Settings:
         self.init_radio_group_low(five_low_radio,4)
         five_low_radio.grid(row=2, column=5)
         
-        # row 3
+        # Group Labels
         fillergr = Label(self.window, text=" ")
         fillergr.grid(row=3, column=0)
         
@@ -128,7 +101,7 @@ class Settings:
         
         # ID Settings --------------------------------
         
-        # row 1, 2
+        # ID Radios
         fillerid = Label(self.window, text=" ")
         fillerid.grid(row=1, column=6)
         
@@ -152,7 +125,7 @@ class Settings:
         self.init_radio_id(e_radio, 4)
         e_radio.grid(row=1, column=11, rowspan=2)
         
-        # row 3
+        # ID Labels
         id_label1 = Label(self.window, text="1")
         id_label1.grid(row=3, column=7)
         
@@ -170,8 +143,8 @@ class Settings:
         
         
         # Text Input ------------------------
-        text_input = Entry(self.window, textvariable=self.description)
-        text_input.grid(row=1, column=12, columnspan=6)
+        self.text_input = Entry(self.window, textvariable=self.description)
+        self.text_input.grid(row=1, column=12, columnspan=6)
         
         description_label = Label(self.window, text="Description")
         description_label.grid(row=2, column=12, columnspan=6)
@@ -180,22 +153,6 @@ class Settings:
         # Button ---------------------------
         save_button = Button(self.window, text="Save", command = self.save_data)
         save_button.grid(row=1, column=19, columnspan=6, rowspan=2, padx=10)
-        
-        fillersave1 = Label(self.window, text=" ")
-        fillersave1.grid(row=3, column=20, padx=5)
-        
-        fillersave2 = Label(self.window, text=" ")
-        fillersave2.grid(row=3, column=21, padx=5)
-        
-        fillersave3 = Label(self.window, text=" ")
-        fillersave3.grid(row=3, column=22, padx=5)
-        
-        fillersave4 = Label(self.window, text=" ")
-        fillersave4.grid(row=3, column=16, padx=5)
-        
-        fillersave5 = Label(self.window, text=" ")
-        fillersave5.grid(row=3, column=17, padx=5)
-
 
         self.window.mainloop()
     

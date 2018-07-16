@@ -1,8 +1,7 @@
 from Printer import *
 
 class Database:
-    # attributes -----------------------
-    database = ""
+    
     table_column = {"id": 0, "group": 1, "description": 2}
     
     

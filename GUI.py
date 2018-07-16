@@ -5,30 +5,13 @@ from Database import *
 
 class GUI:
     
-    # Objects
-    strg = ""
-    settings = ""
-    database = ""
-    
     # window properties
     window = ""
     height = "200"
     width = "300"
     bkg = "lightblue"
     
-    # Labels
-    headline_label = ""
     headline_font = ("Arial", 25)
-    state_label = ""
-    led_description = ""
-    
-    
-    # Buttons
-    settings_button = ""
-    on_button = ""
-    off_button = ""
-    
-    
     
     def __init__(self, pStrg):
         log("initialise GUI...")
